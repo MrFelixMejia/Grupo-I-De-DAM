@@ -1,0 +1,419 @@
+:host { --teal: #27d8d0; --surface: #121d25; --line: #263845; --muted: #8294a2; color: #e6eff1; font-family: Georgia, 'Times New Roman', serif; }
+ion-content, ion-toolbar { --background: #080e12; --color: #e6eff1; }
+.app-header ion-toolbar { --min-height: 68px; padding: 0 17px; }
+.brand { height: 68px; display: flex; align-items: center; gap: 10px; font-size: 25px; }
+.brand-mark, .profile-mark { width: 37px; height: 37px; display: grid; place-items: center; border-radius: 10px; color: #071115; background: var(--teal); font: bold 32px Arial, sans-serif; }
+.brand strong span { color: var(--teal); }
+.connection { position: absolute; top: 16px; right: 16px; min-width: 128px; box-sizing: border-box; padding: 10px 13px; border: 2px solid var(--line); border-radius: 22px; color: #dce6e8; font: bold 12px monospace; letter-spacing: 1px; }.connection i { display: inline-block; width: 17px; height: 17px; margin-right: 9px; vertical-align: middle; border-radius: 50%; background: var(--teal); }.connection.offline i { background: #fa526b; }.connection-banner { padding: 13px 20px; color: #071115; background: var(--teal); font-weight: bold; font-size: 17px; }
+.page-content { padding: 16px 17px 116px; max-width: 680px; margin: auto; }.balance-card, .transaction, .report-card, .profile-card, .movement-form { border: 2px solid var(--line); border-radius: 15px; background: var(--surface); }.balance-card { padding: 15px; }.balance-card p, .screen-heading p { margin: 0 0 8px; color: var(--muted); font: 12px monospace; text-transform: uppercase; letter-spacing: 1px; }.balance-card h1 { margin: 0 0 10px; font-size: 34px; letter-spacing: 1px; }.balance-card small { color: #4b82e4; font: 13px Arial, sans-serif; }.section-heading { margin: 23px 4px 12px; color: var(--teal); font: bold 13px monospace; text-transform: uppercase; }.transaction-list { display: grid; gap: 8px; }.transaction { padding: 11px 15px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }.transaction h2 { margin: 0 0 6px; font-size: 17px; }.transaction p { margin: 0; color: var(--muted); font: 13px Arial, sans-serif; }.transaction strong { color: #fa536b; font-size: 17px; white-space: nowrap; }.income { color: var(--teal) !important; }
+.screen-heading { margin: 12px 0 23px; }.screen-heading h1 { margin: 0; font-size: 31px; }.full-list { gap: 10px; }.report-card { margin-bottom: 11px; padding: 18px; }.report-card p, .profile-card p { margin: 0 0 8px; color: var(--muted); font-family: Arial, sans-serif; }.report-card strong { font-size: 24px; }.expense { color: #fa536b; }.profile-card { padding: 21px; }.profile-card h2 { margin: 15px 0 7px; }.settings-row { width: 100%; display: flex; justify-content: space-between; margin-top: 10px; padding: 17px; color: #e6eff1; border: 2px solid var(--line); border-radius: 12px; background: var(--surface); font: 16px Georgia, serif; }.settings-row span { color: var(--teal); font-size: 24px; line-height: 12px; }
+.movement-form { display: grid; gap: 17px; padding: 19px; }.movement-form label { display: grid; gap: 7px; color: var(--muted); font: 12px monospace; text-transform: uppercase; }.movement-form input, .movement-form select { width: 100%; box-sizing: border-box; padding: 12px; color: #e6eff1; border: 1px solid var(--line); border-radius: 7px; background: #080e12; font: 16px Arial, sans-serif; }.save-button { min-height: 47px; color: #071115; border: 0; border-radius: 8px; background: var(--teal); font: bold 16px Georgia, serif; }.toast-message { position: fixed; right: 20px; bottom: 82px; left: 20px; z-index: 5; padding: 14px 16px; color: #e6eff1; border: 2px solid var(--teal); border-radius: 12px; background: var(--surface); font-family: Arial, sans-serif; }
+ion-footer ion-toolbar { --border-width: 1px 0 0; --border-color: var(--line); }.bottom-nav { height: 70px; display: flex; align-items: center; justify-content: space-around; }.bottom-nav a { min-width: 48px; color: var(--muted); text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 4px; font-family: Arial, sans-serif; }.bottom-nav span { font-size: 19px; }.bottom-nav small { font-size: 12px; }.bottom-nav .active { color: var(--teal); }.bottom-nav .add-button { width: 55px; height: 55px; min-width: 55px; margin-top: -32px; justify-content: center; color: #071115; border: 5px solid #080e12; border-radius: 50%; background: var(--teal); font: 37px Arial, sans-serif; line-height: 43px; }
+
+
+/* USUARIO */
+
+.user-card {
+  display: flex;
+  align-items: center;
+  padding: 18px;
+}
+
+.user-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #20d8d2;
+  color: #061012;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.user-info {
+  margin-left: 16px;
+  flex: 1;
+}
+
+.user-info h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.user-info p {
+  margin: 4px 0 0;
+  color: #71818a;
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+.estado-online {
+  text-align: right;
+  margin-right: 15px;
+  padding: 10px;
+}
+
+
+/* PRESUPUESTO */
+
+.budget-card {
+  padding: 20px;
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+
+  color: #71818a;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.budget-card h1 {
+  font-size: 42px;
+  margin: 25px 0;
+}
+
+.progress {
+  height: 8px;
+  background: #26343d;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress div {
+  width: 74%;
+  height: 100%;
+  background: #20d8d2;
+  border-radius: 10px;
+}
+
+.budget-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.budget-footer p {
+  color: #71818a;
+  font-size: 14px;
+  max-width: 55%;
+}
+
+.limit {
+  padding: 10px 15px;
+  border: 1px solid #146344;
+  border-radius: 20px;
+  color: #19d779;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+
+/* BOTONES */
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin: 28px 16px;
+}
+
+.actions button {
+  flex: 1;
+  padding: 15px 8px;
+
+  border-radius: 30px;
+  border: 1px solid #1c2a34;
+
+  background: transparent;
+  color: #71818a;
+
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.actions .primary-button {
+  background: #20d8d2;
+  color: #061012;
+  border: none;
+  font-weight: bold;
+}
+
+
+/* MÉTRICAS */
+
+.section-header,
+.activity-title {
+  display: flex;
+  justify-content: space-between;
+
+  margin: 30px 20px 12px;
+
+  color: #71818a;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.metrics {
+  display: flex;
+}
+
+.metrics ion-card {
+  flex: 1;
+  padding: 18px;
+  margin: 6px;
+}
+
+.metrics p {
+  color: #71818a;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.metrics h2 {
+  font-size: 30px;
+  margin: 18px 0;
+}
+
+.green {
+  color: #19d779;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.blue {
+  color: #527cff;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+
+/* ACTIVIDAD */
+
+.activity {
+  overflow: hidden;
+}
+
+.transaction {
+  display: flex;
+  align-items: center;
+
+  padding: 18px;
+  border-bottom: 1px solid #1c2a34;
+}
+
+.transaction:last-child {
+  border-bottom: none;
+}
+
+.transaction-icon {
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid #1c2a34;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.transaction-info {
+  flex: 1;
+  margin-left: 14px;
+}
+
+.transaction-info h3 {
+  font-size: 14px;
+  margin: 0 0 8px;
+}
+
+.transaction-info span {
+  color: #71818a;
+  border: 1px solid #1c2a34;
+  border-radius: 15px;
+
+  padding: 5px 9px;
+
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.transaction-info small {
+  display: block;
+  margin-top: 7px;
+  color: #71818a;
+}
+
+.transaction strong {
+  font-size: 14px;
+}
+
+.income,
+.income-text {
+  color: #19d779 !important;
+}
+
+
+/* FOOTER */
+
+ion-footer ion-toolbar {
+  --background: #080d11;
+  --border-width: 0;
+}
+
+.bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  padding: 12px 0;
+}
+
+.bottom-nav div {
+  color: #71818a;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bottom-nav span {
+  font-size: 22px;
+}
+
+.bottom-nav small {
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.bottom-nav .active {
+  color: #20d8d2;
+}
+
+.profile-nav {
+  position: relative;
+  min-width: 48px;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-nav .add-button {
+  position: absolute;
+  bottom: 45px;
+  margin: 0;
+}
+
+ion-footer ion-toolbar {
+  --min-height: 108px;
+}
+
+.bottom-nav {
+  height: 108px;
+  box-sizing: border-box;
+  align-items: flex-end;
+  padding: 0 0 8px;
+}
+
+.profile-nav {
+  height: 37px;
+  align-items: flex-end;
+}
+
+.profile-nav .add-button {
+  margin-top: 0;
+}
+
+/* Ajustes para pantallas estrechas y vistas amplias. */
+.transaction > div {
+  min-width: 0;
+}
+
+.transaction h2,
+.transaction p {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 380px) {
+  .app-header ion-toolbar {
+    padding: 0 12px;
+  }
+
+  .brand {
+    gap: 7px;
+    font-size: 21px;
+  }
+
+  .brand-mark {
+    width: 33px;
+    height: 33px;
+    font-size: 28px;
+  }
+
+  .connection {
+    top: 19px;
+    right: 12px;
+    min-width: 106px;
+    padding: 8px 9px;
+    font-size: 10px;
+  }
+
+  .connection i {
+    width: 13px;
+    height: 13px;
+    margin-right: 5px;
+  }
+
+  .connection-banner {
+    padding: 11px 14px;
+    font-size: 15px;
+  }
+
+  .page-content {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .balance-card h1 {
+    font-size: 29px;
+  }
+
+  .transaction {
+    padding: 11px;
+  }
+
+  .transaction h2,
+  .transaction strong {
+    font-size: 15px;
+  }
+
+  .bottom-nav a {
+    min-width: 40px;
+  }
+
+  .bottom-nav small {
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 700px) {
+  .app-header ion-toolbar,
+  .connection-banner {
+    padding-right: max(32px, calc((100% - 680px) / 2));
+    padding-left: max(32px, calc((100% - 680px) / 2));
+  }
+
+  .page-content {
+    padding-top: 28px;
+  }
+
+  .transaction-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .full-list {
+    grid-template-columns: 1fr;
+  }
+}

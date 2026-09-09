@@ -1,0 +1,32 @@
+<ion-header class="app-header">
+  <ion-toolbar>
+    <div class="brand"><span class="brand-mark">+</span><strong>Controla<span>+</span></strong></div>
+    <div class="connection" [class.offline]="!connected"><i></i>{{ connected ? 'ONLINE' : 'OFFLINE' }}</div>
+  </ion-toolbar>
+  <div class="connection-banner">{{ connected ? 'Conexion restablecida' : 'Sin conexion' }}</div>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  @if (section === 'inicio') {
+    <main class="page-content">
+      <section class="balance-card"><p>Balance disponible</p><h1>RD$ 24,850.00</h1><small>Actualizado hoy · 9:41 a. m.</small></section>
+      <div class="section-heading">Movimientos recientes</div>
+      <section class="transaction-list">
+        @for (transaction of transactions; track transaction.title) {
+          <article class="transaction"><div><h2>{{ transaction.title }}</h2><p>{{ transaction.date }}</p></div><strong [class.income]="transaction.income">{{ transaction.amount }}</strong></article>
+        }
+      </section>
+    </main>
+  } @else if (section === 'movimientos') {
+    <main class="page-content"><div class="screen-heading"><p>Historial</p><h1>Movimientos</h1></div><section class="transaction-list full-list">@for (transaction of transactions; track transaction.title) { <article class="transaction"><div><h2>{{ transaction.title }}</h2><p>{{ transaction.date }}</p></div><strong [class.income]="transaction.income">{{ transaction.amount }}</strong></article> }</section></main>
+  } @else if (section === 'reportes') {
+    <main class="page-content"><div class="screen-heading"><p>Resumen de septiembre</p><h1>Reportes</h1></div><section class="report-card"><p>Ingresos</p><strong class="income">RD$ 5,000.00</strong></section><section class="report-card"><p>Gastos</p><strong class="expense">RD$ 1,730.00</strong></section><section class="report-card"><p>Balance del periodo</p><strong>RD$ 3,270.00</strong></section></main>
+  } @else if (section === 'perfil') {
+    <main class="page-content"><div class="screen-heading"><p>Tu cuenta</p><h1>Perfil</h1></div><section class="profile-card"><span class="profile-mark">+</span><h2>Usuario Controla</h2><p>Gestiona tus preferencias y notificaciones.</p></section><button class="settings-row" type="button">Notificaciones <span>›</span></button><button class="settings-row" type="button">Categorias <span>›</span></button></main>
+  } @else {
+    <main class="page-content"><div class="screen-heading"><p>Nuevo registro</p><h1>Agregar movimiento</h1></div><form class="movement-form" (ngSubmit)="saveMovement()"><label>Descripcion<input name="description" [(ngModel)]="newMovement.description" placeholder="Ej. Transporte" required></label><label>Monto<input name="amount" [(ngModel)]="newMovement.amount" type="number" min="1" placeholder="0.00" required></label><label>Tipo<select name="income" [(ngModel)]="newMovement.income"><option [ngValue]="false">Gasto</option><option [ngValue]="true">Ingreso</option></select></label><button class="save-button" type="submit">Guardar movimiento</button></form></main>
+  }
+  @if (notice) { <div class="toast-message">{{ notice }}</div> }
+</ion-content>
+
+<ion-footer><ion-toolbar><nav class="bottom-nav" aria-label="Navegacion principal"><a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>●</span><small>Inicio</small></a><a routerLink="/movimientos" routerLinkActive="active"><span>●</span><small>Movs.</small></a><a routerLink="/reportes" routerLinkActive="active"><span>●</span><small>Reportes</small></a><div class="profile-nav"><a class="add-button" routerLink="/agregar" aria-label="Agregar movimiento">+</a><a routerLink="/perfil" routerLinkActive="active"><span>●</span><small>Perfil</small></a></div></nav></ion-toolbar></ion-footer>
